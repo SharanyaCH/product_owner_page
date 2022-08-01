@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Owners Page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+        <a class="navbar-brand" href="#">Product Owner Management System</a>
+    </nav>-
+    <div class="container">
+        <div class="row">
+            <h1>List of Product Owners</h1>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-3">
+                <a th:href="@{/product_owners/new}" class="btn btn-dark btn-sm mb-3">Add Product Owner</a>
+            </div>
+        </div>
+
+        <table class="table table-hover table-bordered ">
+            <thead class="table-dark">
+                <tr>
+                    <!---<th>Id</th>--->
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email Id</th>
+                    <th>Product Name</th>
+                    <th>Product Type</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr th:each="product_owner :${product_owners}">
+                    <!-------<td th:text="${product_owner.product_owner_id}"></td>------>
+                    <td th:text="${product_owner.firstname}"></td>
+                    <td th:text="${product_owner.lastname}"></td>
+                    <td th:text="${product_owner.emailId}"></td>
+                    <td th:text="${product_owner.product_Name}"></td>
+                    <td th:text="${product_owner.product_Type}"></td>
+                    <td>
+                        <a th:href="@{/product_owners/update/{product_owner_id} (product_owner_id=${product_owner.product_owner_id})}" class="btn btn-dark">
+                          Update
+                        </a>
+
+                        <a th:href="@{/product_owners/{product_owner_id} (product_owner_id=${product_owner.product_owner_id})}" class="btn btn-danger">
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+</body>
+</html>
